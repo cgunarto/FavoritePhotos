@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		4F91C05C1A0C38F700FF6A65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C05B1A0C38F700FF6A65 /* main.m */; };
 		4F91C05F1A0C38F700FF6A65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C05E1A0C38F700FF6A65 /* AppDelegate.m */; };
-		4F91C0621A0C38F700FF6A65 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0611A0C38F700FF6A65 /* ViewController.m */; };
+		4F91C0621A0C38F700FF6A65 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0611A0C38F700FF6A65 /* RootViewController.m */; };
 		4F91C0651A0C38F700FF6A65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F91C0631A0C38F700FF6A65 /* Main.storyboard */; };
 		4F91C0671A0C38F700FF6A65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F91C0661A0C38F700FF6A65 /* Images.xcassets */; };
 		4F91C06A1A0C38F700FF6A65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F91C0681A0C38F700FF6A65 /* LaunchScreen.xib */; };
 		4F91C0761A0C38F700FF6A65 /* Favorite_PhotosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0751A0C38F700FF6A65 /* Favorite_PhotosTests.m */; };
+		4F91C12F1A0E953E00FF6A65 /* InstagramSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C12E1A0E953E00FF6A65 /* InstagramSearchViewController.m */; };
+		4F91C1361A0E98A400FF6A65 /* InstagramPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C1351A0E98A400FF6A65 /* InstagramPhotos.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +34,18 @@
 		4F91C05B1A0C38F700FF6A65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4F91C05D1A0C38F700FF6A65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4F91C05E1A0C38F700FF6A65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4F91C0601A0C38F700FF6A65 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4F91C0611A0C38F700FF6A65 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4F91C0601A0C38F700FF6A65 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		4F91C0611A0C38F700FF6A65 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4F91C0641A0C38F700FF6A65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F91C0661A0C38F700FF6A65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4F91C0691A0C38F700FF6A65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4F91C06F1A0C38F700FF6A65 /* Favorite PhotosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Favorite PhotosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F91C0741A0C38F700FF6A65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F91C0751A0C38F700FF6A65 /* Favorite_PhotosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Favorite_PhotosTests.m; sourceTree = "<group>"; };
+		4F91C12D1A0E953E00FF6A65 /* InstagramSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramSearchViewController.h; sourceTree = "<group>"; };
+		4F91C12E1A0E953E00FF6A65 /* InstagramSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramSearchViewController.m; sourceTree = "<group>"; };
+		4F91C1341A0E98A400FF6A65 /* InstagramPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPhotos.h; sourceTree = "<group>"; };
+		4F91C1351A0E98A400FF6A65 /* InstagramPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramPhotos.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +89,11 @@
 			children = (
 				4F91C05D1A0C38F700FF6A65 /* AppDelegate.h */,
 				4F91C05E1A0C38F700FF6A65 /* AppDelegate.m */,
-				4F91C0601A0C38F700FF6A65 /* ViewController.h */,
-				4F91C0611A0C38F700FF6A65 /* ViewController.m */,
+				4F91C0601A0C38F700FF6A65 /* RootViewController.h */,
+				4F91C0611A0C38F700FF6A65 /* RootViewController.m */,
+				4F91C12D1A0E953E00FF6A65 /* InstagramSearchViewController.h */,
+				4F91C12E1A0E953E00FF6A65 /* InstagramSearchViewController.m */,
+				4F91C1371A0E98A600FF6A65 /* Model */,
 				4F91C0631A0C38F700FF6A65 /* Main.storyboard */,
 				4F91C0661A0C38F700FF6A65 /* Images.xcassets */,
 				4F91C0681A0C38F700FF6A65 /* LaunchScreen.xib */,
@@ -117,6 +126,15 @@
 				4F91C0741A0C38F700FF6A65 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4F91C1371A0E98A600FF6A65 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F91C1341A0E98A400FF6A65 /* InstagramPhotos.h */,
+				4F91C1351A0E98A400FF6A65 /* InstagramPhotos.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F91C0621A0C38F700FF6A65 /* ViewController.m in Sources */,
+				4F91C0621A0C38F700FF6A65 /* RootViewController.m in Sources */,
+				4F91C12F1A0E953E00FF6A65 /* InstagramSearchViewController.m in Sources */,
 				4F91C05F1A0C38F700FF6A65 /* AppDelegate.m in Sources */,
+				4F91C1361A0E98A400FF6A65 /* InstagramPhotos.m in Sources */,
 				4F91C05C1A0C38F700FF6A65 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +432,7 @@
 				4F91C07B1A0C38F700FF6A65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F91C07C1A0C38F700FF6A65 /* Build configuration list for PBXNativeTarget "Favorite PhotosTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +441,7 @@
 				4F91C07E1A0C38F700FF6A65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
