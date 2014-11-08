@@ -15,15 +15,18 @@
     self = [super init];
 
     //If it's an image or video
-    if ([photoDictionary[@"image"] isEqualToString:@"image"])
+    if ([photoDictionary[@"type"] isEqualToString:@"image"])
     {
         self.isImage = YES;
     }
 
-    //Getting the standard Resolution URL from Instagram JSON dictionary
+    //Getting the standard Resolution URL from Instagram JSON dictionary and storing it as DATA
     NSDictionary *images = photoDictionary[@"images"];
     NSDictionary *standardResolution = images[@"standard_resolution"];
-    self.StandardResolutionPhotoURL = standardResolution[@"url"];
+    NSString *imageURLString = standardResolution[@"url"];
+    NSURL *imageURL = [NSURL URLWithString:imageURLString];
+
+    self.StandardResolutionPhotoData = [NSData dataWithContentsOfURL:imageURL];
 
     return self;
 }

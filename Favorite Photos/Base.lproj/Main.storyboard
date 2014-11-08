@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hUu-KZ-Mcc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -13,19 +14,20 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="9CO-gh-hmS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234.66666666666666" y="385.29333333333335"/>
+            <point key="canvasLocation" x="661" y="385"/>
         </scene>
-        <!--View Controller-->
+        <!--Instagram Search View Controller-->
         <scene sceneID="Nd8-hL-sVb">
             <objects>
-                <viewController id="5mI-zo-tDm" sceneMemberID="viewController">
+                <viewController id="5mI-zo-tDm" customClass="InstagramSearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HCK-kM-q2d"/>
                         <viewControllerLayoutGuide type="bottom" id="5Py-bv-74n"/>
@@ -33,12 +35,81 @@
                     <view key="view" contentMode="scaleToFill" id="dn4-2g-DWY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MEI-Cv-2gd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HfG-D6-EMf">
+                                    <size key="itemSize" width="300" height="300"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchCell" id="apn-eF-6NH" customClass="InstaSearchCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oxi-vS-8z6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="oxi-vS-8z6" firstAttribute="top" secondItem="apn-eF-6NH" secondAttribute="topMargin" constant="-8" id="5Rx-Zx-8Ir"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="oxi-vS-8z6" secondAttribute="trailing" constant="-8" id="gh4-Y7-T16"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="oxi-vS-8z6" secondAttribute="bottom" constant="-8" id="jec-8X-wi5"/>
+                                            <constraint firstItem="oxi-vS-8z6" firstAttribute="leading" secondItem="apn-eF-6NH" secondAttribute="leadingMargin" constant="-8" id="yez-w5-mfl"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="oxi-vS-8z6" id="yOh-qy-edi"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="5mI-zo-tDm" id="PNB-8V-jml"/>
+                                    <outlet property="delegate" destination="5mI-zo-tDm" id="Svp-m3-8C5"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="bottom" secondItem="dn4-2g-DWY" secondAttribute="bottomMargin" id="9iW-Q5-aYC"/>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="top" secondItem="dn4-2g-DWY" secondAttribute="topMargin" id="eL7-H6-z4Z"/>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="leading" secondItem="dn4-2g-DWY" secondAttribute="leadingMargin" constant="-16" id="fSf-p0-FF9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MEI-Cv-2gd" secondAttribute="trailing" constant="-16" id="kk8-sS-ebb"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="pmv-WU-cXd"/>
+                    <connections>
+                        <outlet property="collectionView" destination="MEI-Cv-2gd" id="Cbl-s9-ap8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py6-Ib-P4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="659" y="385"/>
+            <point key="canvasLocation" x="661" y="1100"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="7fG-Xk-9S1">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="hUu-KZ-Mcc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="urE-DA-sJn">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="gei-Mw-TUf"/>
+                        <segue destination="5mI-zo-tDm" kind="relationship" relationship="viewControllers" id="vKy-8M-Wf5"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fLy-va-FWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="234" y="385"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

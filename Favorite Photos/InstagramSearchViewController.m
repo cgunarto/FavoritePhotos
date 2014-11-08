@@ -8,11 +8,13 @@
 
 #import "InstagramSearchViewController.h"
 #import "InstagramPhotos.h"
+#import "InstaSearchCollectionViewCell.h"
 
-#define kURLPopularTag @"https://api.instagram.com/v1/media/popular?q=dogs"
+#define kURLSearchTag @"https://api.instagram.com/v1/tags/dogs/media/recent?client_id=c0ee42e28f254733b9d1a1dbdb75fd23"
 
-@interface InstagramSearchViewController ()
+@interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (strong, nonatomic) NSMutableArray *allInstagramPhotosArray;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -21,8 +23,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadInstagramURLRequest:kURLPopularTag];
+    [self loadInstagramURLRequest:kURLSearchTag];
 
+    self.collectionView.pagingEnabled = YES; //TODO:check what this does later
 
 }
 
@@ -58,17 +61,34 @@
                                     NSDictionary *allPhotosDataDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                                     NSArray *allDataArray = allPhotosDataDictionary[@"data"];
 
-                                     for (NSDictionary *photo in allDataArray)
+                                     for (NSDictionary *photoDictionary in allDataArray)
                                      {
-                                         InstagramPhotos *instaPhotos = [[InstagramPhotos alloc]initWithDictionary:photo];
+                                         InstagramPhotos *instaPhotos = [[InstagramPhotos alloc]initWithDictionary:photoDictionary];
                                          [self.allInstagramPhotosArray addObject:instaPhotos];
 
                                      }
 
-//                                   [self.tableView reloadData]; //TODO:REPLACE THIS WITH COLLECTIONVIEW RELOAD DATA EQUIVALENT
+                                   [self.collectionView reloadData];
                                  }
                             }];
 }
 
+#pragma mark Collection View Delegate Method
+
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.allInstagramPhotosArray.count;
+}
+
+- (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    InstaSearchCollectionViewCell *instaCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"searchCell" forIndexPath:indexPath];
+    InstagramPhotos *instaPhoto = self.allInstagramPhotosArray[indexPath.row];
+
+    instaCell.imageView.image = [UIImage imageWithData:instaPhoto.StandardResolutionPhotoData];
+
+    return instaCell;
+
+}
 
 @end
