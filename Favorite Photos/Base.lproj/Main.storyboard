@@ -54,18 +54,31 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oxi-vS-8z6">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                                    <gestureRecognizers/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zgg-eg-07X">
+                                                    <rect key="frame" x="125" y="125" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="Huw-0T-sO3"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Xc3-mo-hva"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="oxi-vS-8z6" firstAttribute="top" secondItem="apn-eF-6NH" secondAttribute="topMargin" constant="-8" id="5Rx-Zx-8Ir"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="oxi-vS-8z6" secondAttribute="trailing" constant="-8" id="gh4-Y7-T16"/>
+                                            <constraint firstItem="zgg-eg-07X" firstAttribute="top" secondItem="apn-eF-6NH" secondAttribute="topMargin" constant="117" id="irX-eM-nLP"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="oxi-vS-8z6" secondAttribute="bottom" constant="-8" id="jec-8X-wi5"/>
+                                            <constraint firstItem="zgg-eg-07X" firstAttribute="leading" secondItem="apn-eF-6NH" secondAttribute="leadingMargin" constant="117" id="v6V-d5-U1S"/>
                                             <constraint firstItem="oxi-vS-8z6" firstAttribute="leading" secondItem="apn-eF-6NH" secondAttribute="leadingMargin" constant="-8" id="yez-w5-mfl"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="heartImageView" destination="zgg-eg-07X" id="pZq-LP-peW"/>
                                             <outlet property="imageView" destination="oxi-vS-8z6" id="yOh-qy-edi"/>
+                                            <outletCollection property="gestureRecognizers" destination="5ZE-pG-ZYm" appends="YES" id="fty-06-gYn"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -77,18 +90,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="MEI-Cv-2gd" secondAttribute="trailing" constant="-16" id="EHD-Iw-lYa"/>
-                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="top" secondItem="dn4-2g-DWY" secondAttribute="topMargin" id="XDn-yA-qWo"/>
-                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="bottom" secondItem="dn4-2g-DWY" secondAttribute="bottomMargin" id="heK-Np-N2M"/>
-                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="leading" secondItem="dn4-2g-DWY" secondAttribute="leadingMargin" constant="-16" id="nN8-K9-mGM"/>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="bottom" secondItem="dn4-2g-DWY" secondAttribute="bottomMargin" id="KaD-h9-Acc"/>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="leading" secondItem="dn4-2g-DWY" secondAttribute="leadingMargin" constant="-16" id="TIw-Fn-Hw8"/>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="top" secondItem="dn4-2g-DWY" secondAttribute="topMargin" id="Yox-kA-m1y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MEI-Cv-2gd" secondAttribute="trailing" constant="-16" id="h4T-JB-wlI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="pmv-WU-cXd"/>
                     <connections>
                         <outlet property="collectionView" destination="MEI-Cv-2gd" id="Cbl-s9-ap8"/>
+                        <outlet property="doubleTapImageGesture" destination="5ZE-pG-ZYm" id="ged-HI-cTn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py6-Ib-P4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5ZE-pG-ZYm">
+                    <connections>
+                        <action selector="onDoubleTappingImage:" destination="5mI-zo-tDm" id="U6L-PA-FlV"/>
+                        <outlet property="delegate" destination="5mI-zo-tDm" id="oMO-41-WhO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="661" y="1100"/>
         </scene>

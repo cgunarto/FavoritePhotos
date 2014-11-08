@@ -11,6 +11,7 @@
 @interface InstagramPhotos : NSObject
 
 @property (strong, nonatomic) NSData *StandardResolutionPhotoData;
+@property (strong, nonatomic) NSString *photoID;
 @property BOOL isImage;
 
 

@@ -20,6 +20,9 @@
         self.isImage = YES;
     }
 
+    //Set photoID for checking favorites
+    self.photoID = photoDictionary[@"id"];
+
     //Getting the standard Resolution URL from Instagram JSON dictionary and storing it as DATA
     NSDictionary *images = photoDictionary[@"images"];
     NSDictionary *standardResolution = images[@"standard_resolution"];

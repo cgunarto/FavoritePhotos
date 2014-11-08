@@ -10,11 +10,12 @@
 #import "InstagramPhotos.h"
 #import "InstaSearchCollectionViewCell.h"
 
-#define kURLSearchTag @"https://api.instagram.com/v1/tags/dogs/media/recent?client_id=c0ee42e28f254733b9d1a1dbdb75fd23"
+#define kURLSearchTag @"https://api.instagram.com/v1/tags/dogs/media/recent?count=10&client_id=c0ee42e28f254733b9d1a1dbdb75fd23"
 
 @interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (strong, nonatomic) NSMutableArray *allInstagramPhotosArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *doubleTapImageGesture;
 
 @end
 
@@ -23,9 +24,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setRequiredTapGestureForFavorite];
     [self loadInstagramURLRequest:kURLSearchTag];
 
-    self.collectionView.pagingEnabled = YES; 
+    self.collectionView.pagingEnabled = YES;
 
 }
 
@@ -90,5 +92,48 @@
     return instaCell;
 
 }
+
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"I've been tapped!");
+//}
+
+#pragma mark Tap Gesture
+
+- (void)setRequiredTapGestureForFavorite
+{
+    [self.doubleTapImageGesture setNumberOfTapsRequired:2];
+    [self.doubleTapImageGesture setNumberOfTouchesRequired:1];
+}
+
+- (IBAction)onDoubleTappingImage:(UITapGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded)
+    {
+        CGPoint point = [sender locationInView:self.collectionView];
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+
+        //if image is tapped twice, a heart shape will appear to indicate it was favorited
+        if (indexPath)
+        {
+            NSLog(@"Image at %li was double tapped",indexPath.item);
+            InstaSearchCollectionViewCell *instaCell = (InstaSearchCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+
+            [UIView animateWithDuration:1 animations:^{
+                instaCell.heartImageView.image = [UIImage imageNamed:@"solid_gray_heart"];
+                instaCell.heartImageView.alpha =0.0f;
+            }];
+
+        }
+        
+        else
+        {
+
+        }
+    }
+}
+
+
+
 
 @end
