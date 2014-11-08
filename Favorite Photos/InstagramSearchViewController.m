@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *doubleTapImageGesture;
 
+
 @end
 
 @implementation InstagramSearchViewController
@@ -28,6 +29,7 @@
     [self loadInstagramURLRequest:kURLSearchTag];
 
     self.collectionView.pagingEnabled = YES;
+    self.favoritedPhotosArray = [@[]mutableCopy];
 
 }
 
@@ -93,11 +95,6 @@
 
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSLog(@"I've been tapped!");
-//}
-
 #pragma mark Tap Gesture
 
 - (void)setRequiredTapGestureForFavorite
@@ -106,7 +103,7 @@
     [self.doubleTapImageGesture setNumberOfTouchesRequired:1];
 }
 
-- (IBAction)onDoubleTappingImage:(UITapGestureRecognizer *)sender
+- (IBAction)OnDoubleTapAddToFavorite:(UITapGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateEnded)
     {
@@ -117,19 +114,42 @@
         if (indexPath)
         {
             NSLog(@"Image at %li was double tapped",indexPath.item);
-            InstaSearchCollectionViewCell *instaCell = (InstaSearchCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
 
+            InstaSearchCollectionViewCell *instaCell = (InstaSearchCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
             [UIView animateWithDuration:1 animations:^{
                 instaCell.heartImageView.image = [UIImage imageNamed:@"solid_gray_heart"];
                 instaCell.heartImageView.alpha =0.0f;
             }];
 
+            //Check if the photo is already in the array
+            InstagramPhotos *favoritedPhoto = self.allInstagramPhotosArray[indexPath.item];
+            [self checkAndAddToFavoritedPhotosArray:favoritedPhoto];
+
         }
-        
+
         else
         {
 
         }
+    }
+}
+
+//Check if photo is double tapped photo is already in the array, if not, add it in the favorite Photos array
+- (void)checkAndAddToFavoritedPhotosArray:(InstagramPhotos *)favoritedPhoto
+{
+    BOOL photoIsFavorited = NO;
+    for (InstagramPhotos *photo in self.favoritedPhotosArray)
+    {
+        if (favoritedPhoto.photoID == photo.photoID)
+        {
+            photoIsFavorited = YES;
+        }
+    }
+
+    if (photoIsFavorited == NO)
+    {
+        [self.favoritedPhotosArray addObject:favoritedPhoto];
+        NSLog(@"Photo added to array");
     }
 }
 

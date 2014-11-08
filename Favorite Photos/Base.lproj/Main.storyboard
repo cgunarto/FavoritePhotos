@@ -105,7 +105,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py6-Ib-P4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="5ZE-pG-ZYm">
                     <connections>
-                        <action selector="onDoubleTappingImage:" destination="5mI-zo-tDm" id="U6L-PA-FlV"/>
+                        <action selector="OnDoubleTapAddToFavorite:" destination="5mI-zo-tDm" id="FED-g1-m2d"/>
                         <outlet property="delegate" destination="5mI-zo-tDm" id="oMO-41-WhO"/>
                     </connections>
                 </tapGestureRecognizer>

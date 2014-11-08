@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface InstagramSearchViewController : UIViewController
+@property (strong, nonatomic) NSMutableArray *favoritedPhotosArray;
 
 @end
