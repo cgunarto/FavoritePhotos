@@ -25,7 +25,7 @@
     [super viewDidLoad];
     [self loadInstagramURLRequest:kURLSearchTag];
 
-    self.collectionView.pagingEnabled = YES; //TODO:check what this does later
+    self.collectionView.pagingEnabled = YES; 
 
 }
 

@@ -36,9 +36,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MEI-Cv-2gd">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MEI-Cv-2gd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HfG-D6-EMf">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HfG-D6-EMf">
                                     <size key="itemSize" width="300" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -77,10 +77,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="bottom" secondItem="dn4-2g-DWY" secondAttribute="bottomMargin" id="9iW-Q5-aYC"/>
-                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="top" secondItem="dn4-2g-DWY" secondAttribute="topMargin" id="eL7-H6-z4Z"/>
-                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="leading" secondItem="dn4-2g-DWY" secondAttribute="leadingMargin" constant="-16" id="fSf-p0-FF9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="MEI-Cv-2gd" secondAttribute="trailing" constant="-16" id="kk8-sS-ebb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MEI-Cv-2gd" secondAttribute="trailing" constant="-16" id="EHD-Iw-lYa"/>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="top" secondItem="dn4-2g-DWY" secondAttribute="topMargin" id="XDn-yA-qWo"/>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="bottom" secondItem="dn4-2g-DWY" secondAttribute="bottomMargin" id="heK-Np-N2M"/>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="leading" secondItem="dn4-2g-DWY" secondAttribute="leadingMargin" constant="-16" id="nN8-K9-mGM"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="pmv-WU-cXd"/>
