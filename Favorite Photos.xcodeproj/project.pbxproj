@@ -16,7 +16,7 @@
 		4F91C0761A0C38F700FF6A65 /* Favorite_PhotosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C0751A0C38F700FF6A65 /* Favorite_PhotosTests.m */; };
 		4F91C12F1A0E953E00FF6A65 /* InstagramSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C12E1A0E953E00FF6A65 /* InstagramSearchViewController.m */; };
 		4F91C1361A0E98A400FF6A65 /* InstagramPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C1351A0E98A400FF6A65 /* InstagramPhotos.m */; };
-		4F91C13A1A0EA45800FF6A65 /* InstaSearchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C1391A0EA45800FF6A65 /* InstaSearchCollectionViewCell.m */; };
+		4F91C13A1A0EA45800FF6A65 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C1391A0EA45800FF6A65 /* PhotoCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +47,8 @@
 		4F91C12E1A0E953E00FF6A65 /* InstagramSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramSearchViewController.m; sourceTree = "<group>"; };
 		4F91C1341A0E98A400FF6A65 /* InstagramPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPhotos.h; sourceTree = "<group>"; };
 		4F91C1351A0E98A400FF6A65 /* InstagramPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramPhotos.m; sourceTree = "<group>"; };
-		4F91C1381A0EA45800FF6A65 /* InstaSearchCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaSearchCollectionViewCell.h; sourceTree = "<group>"; };
-		4F91C1391A0EA45800FF6A65 /* InstaSearchCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaSearchCollectionViewCell.m; sourceTree = "<group>"; };
+		4F91C1381A0EA45800FF6A65 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		4F91C1391A0EA45800FF6A65 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +136,8 @@
 			children = (
 				4F91C1341A0E98A400FF6A65 /* InstagramPhotos.h */,
 				4F91C1351A0E98A400FF6A65 /* InstagramPhotos.m */,
-				4F91C1381A0EA45800FF6A65 /* InstaSearchCollectionViewCell.h */,
-				4F91C1391A0EA45800FF6A65 /* InstaSearchCollectionViewCell.m */,
+				4F91C1381A0EA45800FF6A65 /* PhotoCollectionViewCell.h */,
+				4F91C1391A0EA45800FF6A65 /* PhotoCollectionViewCell.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 			files = (
 				4F91C0621A0C38F700FF6A65 /* RootViewController.m in Sources */,
 				4F91C12F1A0E953E00FF6A65 /* InstagramSearchViewController.m in Sources */,
-				4F91C13A1A0EA45800FF6A65 /* InstaSearchCollectionViewCell.m in Sources */,
+				4F91C13A1A0EA45800FF6A65 /* PhotoCollectionViewCell.m in Sources */,
 				4F91C05F1A0C38F700FF6A65 /* AppDelegate.m in Sources */,
 				4F91C1361A0E98A400FF6A65 /* InstagramPhotos.m in Sources */,
 				4F91C05C1A0C38F700FF6A65 /* main.m in Sources */,

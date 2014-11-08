@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Christina Gunarto. All rights reserved.
 //
 
-#import "InstaSearchCollectionViewCell.h"
+#import "PhotoCollectionViewCell.h"
 
-@implementation InstaSearchCollectionViewCell
+@implementation PhotoCollectionViewCell
 
 @end

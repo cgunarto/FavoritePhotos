@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InstaSearchCollectionViewCell : UICollectionViewCell
+@interface PhotoCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *heartImageView;
 

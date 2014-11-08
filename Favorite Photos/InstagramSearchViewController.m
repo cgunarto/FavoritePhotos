@@ -8,11 +8,12 @@
 
 #import "InstagramSearchViewController.h"
 #import "InstagramPhotos.h"
-#import "InstaSearchCollectionViewCell.h"
+#import "PhotoCollectionViewCell.h"
+#import "RootViewController.h"
 
 #define kURLSearchTag @"https://api.instagram.com/v1/tags/dogs/media/recent?count=10&client_id=c0ee42e28f254733b9d1a1dbdb75fd23"
 
-@interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate>
 @property (strong, nonatomic) NSMutableArray *allInstagramPhotosArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *doubleTapImageGesture;
@@ -29,8 +30,9 @@
     [self loadInstagramURLRequest:kURLSearchTag];
 
     self.collectionView.pagingEnabled = YES;
-    self.favoritedPhotosArray = [@[]mutableCopy];
+    self.tabBarController.delegate = self;
 
+    self.favoritedPhotosArray = [@[]mutableCopy];
 }
 
 - (void)loadInstagramURLRequest:(NSString *)urlString
@@ -86,12 +88,12 @@
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    InstaSearchCollectionViewCell *instaCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"searchCell" forIndexPath:indexPath];
+    PhotoCollectionViewCell *photoCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"searchCell" forIndexPath:indexPath];
     InstagramPhotos *instaPhoto = self.allInstagramPhotosArray[indexPath.row];
 
-    instaCell.imageView.image = [UIImage imageWithData:instaPhoto.StandardResolutionPhotoData];
+    photoCell.imageView.image = [UIImage imageWithData:instaPhoto.StandardResolutionPhotoData];
 
-    return instaCell;
+    return photoCell;
 
 }
 
@@ -115,7 +117,7 @@
         {
             NSLog(@"Image at %li was double tapped",indexPath.item);
 
-            InstaSearchCollectionViewCell *instaCell = (InstaSearchCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+            PhotoCollectionViewCell *instaCell = (PhotoCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
             [UIView animateWithDuration:1 animations:^{
                 instaCell.heartImageView.image = [UIImage imageNamed:@"solid_gray_heart"];
                 instaCell.heartImageView.alpha =0.0f;
@@ -153,6 +155,18 @@
     }
 }
 
+
+#pragma mark Tab Bar Methods
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    if (viewController == [tabBarController.viewControllers objectAtIndex:0])
+    {
+        NSLog(@"Fav Photo View Controller have been tapped");
+        RootViewController *rootVC = (RootViewController *)viewController;
+        rootVC.favoritePhotosArray = self.favoritedPhotosArray;
+    }
+}
 
 
 
