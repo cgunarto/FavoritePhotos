@@ -116,7 +116,9 @@
 
     if (instagramPhoto.isFavorited == YES)
     {
-        photoCell.smallHeartView.image = [UIImage imageNamed:@"solid_red_heart"];
+
+            photoCell.smallHeartView.image = [UIImage imageNamed:@"solid_red_heart"];
+
     }
 
     else if (instagramPhoto.isFavorited == NO)
@@ -135,14 +137,15 @@
     [self.doubleTapImageGesture setNumberOfTouchesRequired:1];
 }
 
-- (IBAction)OnDoubleTapAddToFavorite:(UITapGestureRecognizer *)sender
+- (IBAction)OnDoubleTapAddToFavorite:(UITapGestureRecognizer *)gesture
 {
-    if (sender.state == UIGestureRecognizerStateEnded)
+    if (gesture.state == UIGestureRecognizerStateEnded)
     {
-        CGPoint point = [sender locationInView:self.collectionView];
+        CGPoint point = [gesture locationInView:self.collectionView];
         NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
 
         //if image is tapped twice, a heart shape will appear to indicate it was favorited
+        //TODO:this feature is still buggy
         if (indexPath)
         {
             NSLog(@"Image at %li was double tapped",indexPath.item);

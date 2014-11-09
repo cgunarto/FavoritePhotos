@@ -35,6 +35,7 @@
     [self.collectionView reloadData];
 }
 
+
 #pragma mark Collection View 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -47,11 +48,50 @@
     return photoCell;
 }
 
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.favoritePhotosArray.count;
 }
+
+#pragma mark Long Press to Edit
+
+- (IBAction)onPhotoLongPressed:(UILongPressGestureRecognizer *)gesture
+{
+    CGPoint selectedPoint = [gesture locationInView:self.collectionView];
+    NSIndexPath *selectedIndexPath = [self.collectionView indexPathForItemAtPoint:selectedPoint];
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"DELETE" message:@"Delete Photo?" preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction *deleteButton = [UIAlertAction actionWithTitle:@"Delete"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action)
+                                                     {
+                                                         [self.favoritePhotosArray removeObjectAtIndex:selectedIndexPath.item];
+                                                         [self save];
+                                                         [self.collectionView reloadData];
+                                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                                     }];
+
+    UIAlertAction* cancelButton = [UIAlertAction actionWithTitle:@"Cancel"
+                                                    style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action)
+                                                         {
+                                                             [alert dismissViewControllerAnimated:YES completion:nil];
+
+                                                         }];
+
+    [alert addAction:deleteButton];
+    [alert addAction:cancelButton];
+
+    [self presentViewController:alert
+                       animated:YES
+                     completion:nil];
+
+}
+
+
+
+
 
 
 #pragma mark Save and Load Methods

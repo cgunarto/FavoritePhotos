@@ -20,6 +20,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YqD-Tk-qhp">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="CY8-Ps-gwh">
                                     <size key="itemSize" width="300" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -54,6 +55,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="MoZ-52-0v2"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="WQT-AK-pCc"/>
+                                    <outletCollection property="gestureRecognizers" destination="B4c-y1-Wog" appends="YES" id="hHY-TL-jRP"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -75,6 +77,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="B4c-y1-Wog">
+                    <connections>
+                        <action selector="onPhotoLongPressed:" destination="vXZ-lx-hvc" id="kHK-ge-LpF"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="661" y="385"/>
         </scene>
@@ -93,6 +100,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MEI-Cv-2gd">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HfG-D6-EMf">
                                     <size key="itemSize" width="300" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -143,13 +151,13 @@
                                             <outlet property="heartImageView" destination="zgg-eg-07X" id="pZq-LP-peW"/>
                                             <outlet property="imageView" destination="oxi-vS-8z6" id="yOh-qy-edi"/>
                                             <outlet property="smallHeartView" destination="m9l-Bc-eG2" id="N4F-mp-cBm"/>
-                                            <outletCollection property="gestureRecognizers" destination="5ZE-pG-ZYm" appends="YES" id="fty-06-gYn"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="5mI-zo-tDm" id="PNB-8V-jml"/>
                                     <outlet property="delegate" destination="5mI-zo-tDm" id="Svp-m3-8C5"/>
+                                    <outletCollection property="gestureRecognizers" destination="5ZE-pG-ZYm" appends="YES" id="59U-dq-ILw"/>
                                 </connections>
                             </collectionView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="FyS-BM-16t">
