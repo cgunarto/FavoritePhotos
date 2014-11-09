@@ -9,6 +9,8 @@
 #import "RootViewController.h"
 #import "PhotoCollectionViewCell.h"
 #import "InstagramPhotos.h"
+#import <Social/Social.h>
+#import <Twitter/Twitter.h>
 
 @interface RootViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate>
 
@@ -80,6 +82,23 @@
                                                          [alert dismissViewControllerAnimated:YES completion:nil];
                                                      }];
 
+    //Add Twitter send
+    UIAlertAction* tweetButton = [UIAlertAction actionWithTitle:@"Tweet it!"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action)
+                                  {
+                                      SLComposeViewController *tweetSheet = [SLComposeViewController
+                                                                             composeViewControllerForServiceType:SLServiceTypeTwitter];
+                                      [tweetSheet setInitialText:@"I love this photo!"];
+                                      [tweetSheet addImage:[UIImage imageWithData:self.favoritedPhotosArray[selectedIndexPath.item]]];
+
+                                      [self presentViewController:tweetSheet animated:YES completion:nil];
+
+                                      [alert dismissViewControllerAnimated:YES completion:nil];
+
+                                  }];
+
+
     UIAlertAction* cancelButton = [UIAlertAction actionWithTitle:@"Cancel"
                                                     style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction * action)
@@ -88,7 +107,9 @@
 
                                                          }];
 
+
     [alert addAction:deleteButton];
+    [alert addAction:tweetButton];
     [alert addAction:cancelButton];
 
     [self presentViewController:alert

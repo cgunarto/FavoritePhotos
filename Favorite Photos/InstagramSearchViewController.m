@@ -197,8 +197,8 @@
         }
 
         [self.favoritedPhotosDataArray addObject:favoritedPhotoData];
-        [self.favoritedPhotosLatitudeArray addObject:favoritedPhotoLatitude];
-        [self.favoritedPhotosLongitudeArray addObject:favoritedPhotoLongitude];
+//        [self.favoritedPhotosLatitudeArray addObject:favoritedPhotoLatitude];
+//        [self.favoritedPhotosLongitudeArray addObject:favoritedPhotoLongitude];
 
         favoritedPhoto.isFavorited = YES;
     }

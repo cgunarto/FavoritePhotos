@@ -97,7 +97,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KQ3-dD-fSJ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KQ3-dD-fSJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <connections>
                                     <outlet property="delegate" destination="cdz-kR-hHM" id="p2j-yW-tac"/>
@@ -105,6 +105,12 @@
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="KQ3-dD-fSJ" secondAttribute="trailing" constant="-16" id="6v5-ou-IGH"/>
+                            <constraint firstItem="KQ3-dD-fSJ" firstAttribute="leading" secondItem="wzn-2C-2sz" secondAttribute="leadingMargin" constant="-16" id="Prd-gX-6w1"/>
+                            <constraint firstItem="KQ3-dD-fSJ" firstAttribute="top" secondItem="wzn-2C-2sz" secondAttribute="topMargin" id="g2T-Kc-ffY"/>
+                            <constraint firstItem="cuG-ZU-uiU" firstAttribute="top" secondItem="KQ3-dD-fSJ" secondAttribute="bottom" id="vvF-vx-CGf"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="Xlp-e5-E9S"/>
                     <connections>
@@ -234,7 +240,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="hUu-KZ-Mcc" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="urE-DA-sJn">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

@@ -27,12 +27,12 @@
 
 
     //Check if the location is available (if it's a dictionary) and get the lat long
-    if ([photoDictionary[@"location"] isKindOfClass:[NSDictionary class]])
-    {
-        NSDictionary *location = photoDictionary[@"location"];
-        self.latitude = location[@"latitude"];
-        self.longitude = location[@"longitude"];
-    }
+//    if ([photoDictionary[@"location"] isKindOfClass:[NSDictionary class]])
+//    {
+//        NSDictionary *location = photoDictionary[@"location"];
+//        self.latitude = location[@"latitude"];
+//        self.longitude = location[@"longitude"];
+//    }
 
     return self;
 }
