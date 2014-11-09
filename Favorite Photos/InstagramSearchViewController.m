@@ -30,7 +30,7 @@
     [self load];
     [self setRequiredTapGestureForFavorite];
 
-//    self.collectionView.pagingEnabled = YES;
+    self.collectionView.pagingEnabled = YES;
     self.tabBarController.delegate = self;
 }
 
@@ -105,14 +105,18 @@
     InstagramPhotos *instagramPhoto = self.allPhotosArray[indexPath.item];
     photoCell.imageView.image = [UIImage imageWithData:instagramPhoto.standardResolutionPhotoData];
 
-    //check if photo has been favorited before
+    //check if photo has been favorited before -- if yes, load it with a small red heart
+    for (NSData *imageData in self.favoritedPhotosDataArray)
+    {
+        if ([instagramPhoto.standardResolutionPhotoData isEqualToData:imageData])
+        {
+            instagramPhoto.isFavorited = YES;
+        }
+    }
+
     if (instagramPhoto.isFavorited == YES)
     {
         photoCell.smallHeartView.image = [UIImage imageNamed:@"solid_red_heart"];
-    }
-    else
-    {
-        photoCell.smallHeartView.image = nil;
     }
 
     return photoCell;
@@ -139,6 +143,7 @@
             NSLog(@"Image at %li was double tapped",indexPath.item);
 
             PhotoCollectionViewCell *instaCell = (PhotoCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+            
             [UIView animateWithDuration:1
                              animations:^{
                 instaCell.heartImageView.image = [UIImage imageNamed:@"solid_gray_heart"];
