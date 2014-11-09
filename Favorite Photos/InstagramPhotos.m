@@ -29,7 +29,7 @@
     NSString *imageURLString = standardResolution[@"url"];
     NSURL *imageURL = [NSURL URLWithString:imageURLString];
 
-    self.StandardResolutionPhotoData = [NSData dataWithContentsOfURL:imageURL];
+    self.standardResolutionPhotoData = [NSData dataWithContentsOfURL:imageURL];
 
     return self;
 }

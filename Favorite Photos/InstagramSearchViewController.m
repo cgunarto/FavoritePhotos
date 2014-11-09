@@ -11,12 +11,15 @@
 #import "PhotoCollectionViewCell.h"
 #import "RootViewController.h"
 
-#define kURLSearchTag @"https://api.instagram.com/v1/tags/dogs/media/recent?count=10&client_id=c0ee42e28f254733b9d1a1dbdb75fd23"
+#define kURLSearchTag @"https://api.instagram.com/v1/tags/%@/media/recent?count=10&client_id=c0ee42e28f254733b9d1a1dbdb75fd23"
 
-@interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate>
-@property (strong, nonatomic) NSMutableArray *allInstagramPhotosArray;
+@interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UISearchBarDelegate>
+@property (strong, nonatomic) NSMutableArray *allPhotosArray;
+@property (strong, nonatomic) NSMutableArray *imageDataArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *doubleTapImageGesture;
+@property (strong, nonatomic) NSMutableArray *favoritedPhotosDataArray;
+
 
 
 @end
@@ -26,18 +29,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self load];
     [self setRequiredTapGestureForFavorite];
-    [self loadInstagramURLRequest:kURLSearchTag];
 
     self.collectionView.pagingEnabled = YES;
     self.tabBarController.delegate = self;
-
-    self.favoritedPhotosArray = [@[]mutableCopy];
 }
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *textResult = searchBar.text;
+
+    //makes sure there is no empty spaces when it's appended into the instaURLString
+    textResult = [textResult stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *instaURLString = [NSString stringWithFormat:kURLSearchTag,textResult];
+
+    [self.view endEditing:YES];
+    [self loadInstagramURLRequest:instaURLString];
+}
+
 
 - (void)loadInstagramURLRequest:(NSString *)urlString
 {
-    self.allInstagramPhotosArray = [@[]mutableCopy];
+    self.allPhotosArray = [@[]mutableCopy];
 
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
@@ -64,14 +78,14 @@
 
                                  else
                                  {
-                                    NSDictionary *allPhotosDataDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                    NSDictionary *allPhotosDataDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                            options:0 error:nil];
                                     NSArray *allDataArray = allPhotosDataDictionary[@"data"];
 
                                      for (NSDictionary *photoDictionary in allDataArray)
                                      {
-                                         InstagramPhotos *instaPhotos = [[InstagramPhotos alloc]initWithDictionary:photoDictionary];
-                                         [self.allInstagramPhotosArray addObject:instaPhotos];
-
+                                         InstagramPhotos *instagramPhoto = [[InstagramPhotos alloc]initWithDictionary:photoDictionary];
+                                         [self.allPhotosArray addObject:instagramPhoto];
                                      }
 
                                    [self.collectionView reloadData];
@@ -83,18 +97,17 @@
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.allInstagramPhotosArray.count;
+    return self.allPhotosArray.count;
 }
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PhotoCollectionViewCell *photoCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"searchCell" forIndexPath:indexPath];
-    InstagramPhotos *instaPhoto = self.allInstagramPhotosArray[indexPath.row];
-
-    photoCell.imageView.image = [UIImage imageWithData:instaPhoto.StandardResolutionPhotoData];
+    PhotoCollectionViewCell *photoCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"searchCell"
+                                                                                        forIndexPath:indexPath];
+    InstagramPhotos *instagramPhoto = self.allPhotosArray[indexPath.row];
+    photoCell.imageView.image = [UIImage imageWithData:instagramPhoto.standardResolutionPhotoData];
 
     return photoCell;
-
 }
 
 #pragma mark Tap Gesture
@@ -118,19 +131,15 @@
             NSLog(@"Image at %li was double tapped",indexPath.item);
 
             PhotoCollectionViewCell *instaCell = (PhotoCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
-            [UIView animateWithDuration:1 animations:^{
+            [UIView animateWithDuration:1
+                             animations:^{
                 instaCell.heartImageView.image = [UIImage imageNamed:@"solid_gray_heart"];
                 instaCell.heartImageView.alpha =0.0f;
             }];
 
             //Check if the photo is already in the array
-            InstagramPhotos *favoritedPhoto = self.allInstagramPhotosArray[indexPath.item];
-            [self checkAndAddToFavoritedPhotosArray:favoritedPhoto];
-
-        }
-
-        else
-        {
+           InstagramPhotos *favInstagramPhoto = self.allPhotosArray[indexPath.item];
+           [self checkAndAddToFavoritedPhotosArray:favInstagramPhoto];
 
         }
     }
@@ -140,9 +149,10 @@
 - (void)checkAndAddToFavoritedPhotosArray:(InstagramPhotos *)favoritedPhoto
 {
     BOOL photoIsFavorited = NO;
-    for (InstagramPhotos *photo in self.favoritedPhotosArray)
+
+    for (NSData *favoritedPhotoData in self.favoritedPhotosDataArray)
     {
-        if (favoritedPhoto.photoID == photo.photoID)
+        if ([favoritedPhoto.standardResolutionPhotoData isEqualToData:favoritedPhotoData])
         {
             photoIsFavorited = YES;
         }
@@ -150,24 +160,38 @@
 
     if (photoIsFavorited == NO)
     {
-        [self.favoritedPhotosArray addObject:favoritedPhoto];
         NSLog(@"Photo added to array");
+        NSData *favoritedPhotoData = favoritedPhoto.standardResolutionPhotoData;
+        [self.favoritedPhotosDataArray addObject:favoritedPhotoData];
+        [self save];
     }
 }
 
+#pragma mark Save and Load Methods
 
-#pragma mark Tab Bar Methods
-
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+- (void)save
 {
-    if (viewController == [tabBarController.viewControllers objectAtIndex:0])
+    NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
+    [self.favoritedPhotosDataArray writeToURL:plistURL atomically:YES];
+}
+
+- (void)load
+{
+    NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
+    self.favoritedPhotosDataArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+
+    if (self.favoritedPhotosDataArray == nil)
     {
-        NSLog(@"Fav Photo View Controller have been tapped");
-        RootViewController *rootVC = (RootViewController *)viewController;
-        rootVC.favoritePhotosArray = self.favoritedPhotosArray;
+        self.favoritedPhotosDataArray = [@[]mutableCopy];
     }
 }
 
+- (NSURL*) documentsDirectoryURL
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *url = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
+    return url;
+}
 
 
 @end

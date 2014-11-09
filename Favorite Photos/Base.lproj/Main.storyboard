@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="94" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YqD-Tk-qhp">
@@ -90,7 +90,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MEI-Cv-2gd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HfG-D6-EMf">
                                     <size key="itemSize" width="300" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -140,13 +140,24 @@
                                     <outlet property="delegate" destination="5mI-zo-tDm" id="Svp-m3-8C5"/>
                                 </connections>
                             </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="FyS-BM-16t">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="5mI-zo-tDm" id="n9h-rY-wCS"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FyS-BM-16t" firstAttribute="leading" secondItem="dn4-2g-DWY" secondAttribute="leadingMargin" constant="-16" id="2P8-Zi-z58"/>
                             <constraint firstItem="MEI-Cv-2gd" firstAttribute="bottom" secondItem="dn4-2g-DWY" secondAttribute="bottomMargin" id="KaD-h9-Acc"/>
                             <constraint firstItem="MEI-Cv-2gd" firstAttribute="leading" secondItem="dn4-2g-DWY" secondAttribute="leadingMargin" constant="-16" id="TIw-Fn-Hw8"/>
-                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="top" secondItem="dn4-2g-DWY" secondAttribute="topMargin" id="Yox-kA-m1y"/>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="top" secondItem="dn4-2g-DWY" secondAttribute="topMargin" constant="64" id="Yox-kA-m1y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MEI-Cv-2gd" secondAttribute="trailing" constant="-16" id="h4T-JB-wlI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FyS-BM-16t" secondAttribute="trailing" constant="-16" id="j4L-0Y-qpT"/>
+                            <constraint firstItem="MEI-Cv-2gd" firstAttribute="top" secondItem="FyS-BM-16t" secondAttribute="bottom" id="w5N-mD-460"/>
+                            <constraint firstItem="FyS-BM-16t" firstAttribute="top" secondItem="HCK-kM-q2d" secondAttribute="bottom" id="yx3-fE-Koa"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="pmv-WU-cXd"/>

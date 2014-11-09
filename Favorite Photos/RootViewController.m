@@ -25,16 +25,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self load];
     self.collectionView.pagingEnabled = YES;
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    self.favoritePhotosArray = [@[]mutableCopy];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self load];
     [self.collectionView reloadData];
 }
 
@@ -43,8 +40,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     PhotoCollectionViewCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"favoriteCell" forIndexPath:indexPath];
-    InstagramPhotos *instaPhoto = self.favoritePhotosArray[indexPath.row];
-    photoCell.imageView.image = [UIImage imageWithData:instaPhoto.StandardResolutionPhotoData];
+    NSData *imageData= self.favoritePhotosArray[indexPath.row];
+
+    photoCell.imageView.image = [UIImage imageWithData:imageData];
 
     return photoCell;
 }
@@ -56,6 +54,30 @@
 }
 
 
+#pragma mark Save and Load Methods
 
+- (void)save
+{
+    NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
+    [self.favoritePhotosArray writeToURL:plistURL atomically:YES];
+}
+
+- (void)load
+{
+    NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
+    self.favoritePhotosArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+
+    if (self.favoritePhotosArray == nil)
+    {
+        self.favoritePhotosArray = [@[]mutableCopy];
+    }
+}
+
+- (NSURL*)documentsDirectoryURL
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *url = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
+    return url;
+}
 
 @end
