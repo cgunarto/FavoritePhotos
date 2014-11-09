@@ -30,7 +30,7 @@
     [self load];
     [self setRequiredTapGestureForFavorite];
 
-    self.collectionView.pagingEnabled = YES;
+//    self.collectionView.pagingEnabled = YES;
     self.tabBarController.delegate = self;
 }
 
@@ -119,6 +119,11 @@
         photoCell.smallHeartView.image = [UIImage imageNamed:@"solid_red_heart"];
     }
 
+    else if (instagramPhoto.isFavorited == NO)
+    {
+        photoCell.smallHeartView.image = nil;
+    }
+
     return photoCell;
 }
 
@@ -157,7 +162,7 @@
     }
 }
 
-//Check if photo is double tapped photo is already in the array, if not, add it in the favorite Photos array
+//Check if double tapped photo is already in the favorited array, if not, add it in the favorite Photos array
 - (void)checkAndAddToFavoritedPhotosArray:(InstagramPhotos *)favoritedPhoto
 {
     BOOL photoIsFavorited = NO;
@@ -165,12 +170,12 @@
     //IF Photo is already favorited, set isFavorited value to YES, but don't add it again to the array
     for (NSData *favoritedPhotoData in self.favoritedPhotosDataArray)
     {
-        if ([favoritedPhoto.standardResolutionPhotoData isEqualToData:favoritedPhotoData])
+        if ([favoritedPhotoData isEqualToData:favoritedPhoto.standardResolutionPhotoData])
         {
             favoritedPhoto.isFavorited = YES;
         }
     }
-
+    //TODO:FIX THIS
     //IF photo is not already favorited, add it to the array
     if (photoIsFavorited == NO)
     {
@@ -179,10 +184,10 @@
 
         [self.favoritedPhotosDataArray addObject:favoritedPhotoData];
         favoritedPhoto.isFavorited = YES;
-
-        [self.collectionView reloadData];
-        [self save];
     }
+
+    [self.collectionView reloadData];
+    [self save];
 }
 
 #pragma mark Save and Load Methods
