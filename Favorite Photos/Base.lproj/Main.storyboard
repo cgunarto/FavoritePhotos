@@ -92,7 +92,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MEI-Cv-2gd">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HfG-D6-EMf">
-                                    <size key="itemSize" width="300" height="300"/>
+                                    <size key="itemSize" width="300" height="325"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -102,12 +102,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="325"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oxi-vS-8z6">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                                     <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="PFH-aZ-JWr"/>
+                                                        <constraint firstAttribute="height" constant="300" id="iY4-U4-t79"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zgg-eg-07X">
                                                     <rect key="frame" x="125" y="125" width="50" height="50"/>
@@ -116,17 +120,24 @@
                                                         <constraint firstAttribute="width" constant="50" id="Xc3-mo-hva"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m9l-Bc-eG2">
+                                                    <rect key="frame" x="0.0" y="300" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="9IA-Ib-aK7"/>
+                                                        <constraint firstAttribute="height" constant="25" id="pek-fR-GOz"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstItem="oxi-vS-8z6" firstAttribute="top" secondItem="apn-eF-6NH" secondAttribute="topMargin" constant="-8" id="5Rx-Zx-8Ir"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="oxi-vS-8z6" secondAttribute="trailing" constant="-8" id="gh4-Y7-T16"/>
+                                            <constraint firstItem="m9l-Bc-eG2" firstAttribute="leading" secondItem="apn-eF-6NH" secondAttribute="leadingMargin" constant="-8" id="Bkd-x0-2AJ"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="m9l-Bc-eG2" secondAttribute="bottom" constant="-8" id="ILs-m9-Ptf"/>
+                                            <constraint firstItem="oxi-vS-8z6" firstAttribute="top" secondItem="apn-eF-6NH" secondAttribute="topMargin" constant="-8" id="X4y-jY-qJI"/>
+                                            <constraint firstItem="oxi-vS-8z6" firstAttribute="leading" secondItem="apn-eF-6NH" secondAttribute="leadingMargin" constant="-8" id="dPI-Jo-16B"/>
                                             <constraint firstItem="zgg-eg-07X" firstAttribute="top" secondItem="apn-eF-6NH" secondAttribute="topMargin" constant="117" id="irX-eM-nLP"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="oxi-vS-8z6" secondAttribute="bottom" constant="-8" id="jec-8X-wi5"/>
                                             <constraint firstItem="zgg-eg-07X" firstAttribute="leading" secondItem="apn-eF-6NH" secondAttribute="leadingMargin" constant="117" id="v6V-d5-U1S"/>
-                                            <constraint firstItem="oxi-vS-8z6" firstAttribute="leading" secondItem="apn-eF-6NH" secondAttribute="leadingMargin" constant="-8" id="yez-w5-mfl"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="heartImageView" destination="zgg-eg-07X" id="pZq-LP-peW"/>

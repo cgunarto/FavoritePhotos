@@ -15,12 +15,10 @@
 
 @interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) NSMutableArray *allPhotosArray;
-@property (strong, nonatomic) NSMutableArray *imageDataArray;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *doubleTapImageGesture;
 @property (strong, nonatomic) NSMutableArray *favoritedPhotosDataArray;
 
-
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *doubleTapImageGesture;
 
 @end
 
@@ -32,7 +30,7 @@
     [self load];
     [self setRequiredTapGestureForFavorite];
 
-    self.collectionView.pagingEnabled = YES;
+//    self.collectionView.pagingEnabled = YES;
     self.tabBarController.delegate = self;
 }
 
@@ -102,10 +100,20 @@
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PhotoCollectionViewCell *photoCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"searchCell"
-                                                                                        forIndexPath:indexPath];
-    InstagramPhotos *instagramPhoto = self.allPhotosArray[indexPath.row];
+    PhotoCollectionViewCell *photoCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"searchCell" forIndexPath:indexPath];
+
+    InstagramPhotos *instagramPhoto = self.allPhotosArray[indexPath.item];
     photoCell.imageView.image = [UIImage imageWithData:instagramPhoto.standardResolutionPhotoData];
+
+    //check if photo has been favorited before
+    if (instagramPhoto.isFavorited == YES)
+    {
+        photoCell.smallHeartView.image = [UIImage imageNamed:@"solid_red_heart"];
+    }
+    else
+    {
+        photoCell.smallHeartView.image = nil;
+    }
 
     return photoCell;
 }
@@ -140,7 +148,6 @@
             //Check if the photo is already in the array
            InstagramPhotos *favInstagramPhoto = self.allPhotosArray[indexPath.item];
            [self checkAndAddToFavoritedPhotosArray:favInstagramPhoto];
-
         }
     }
 }
@@ -150,19 +157,25 @@
 {
     BOOL photoIsFavorited = NO;
 
+    //IF Photo is already favorited, set isFavorited value to YES, but don't add it again to the array
     for (NSData *favoritedPhotoData in self.favoritedPhotosDataArray)
     {
         if ([favoritedPhoto.standardResolutionPhotoData isEqualToData:favoritedPhotoData])
         {
-            photoIsFavorited = YES;
+            favoritedPhoto.isFavorited = YES;
         }
     }
 
+    //IF photo is not already favorited, add it to the array
     if (photoIsFavorited == NO)
     {
         NSLog(@"Photo added to array");
         NSData *favoritedPhotoData = favoritedPhoto.standardResolutionPhotoData;
+
         [self.favoritedPhotosDataArray addObject:favoritedPhotoData];
+        favoritedPhoto.isFavorited = YES;
+
+        [self.collectionView reloadData];
         [self save];
     }
 }
@@ -186,7 +199,7 @@
     }
 }
 
-- (NSURL*) documentsDirectoryURL
+- (NSURL*)documentsDirectoryURL
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *url = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
