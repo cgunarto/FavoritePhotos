@@ -83,7 +83,37 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="661" y="385"/>
+            <point key="canvasLocation" x="234" y="1100"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="ztc-Qx-n66">
+            <objects>
+                <viewController id="cdz-kR-hHM" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YF2-Bk-396"/>
+                        <viewControllerLayoutGuide type="bottom" id="cuG-ZU-uiU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wzn-2C-2sz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KQ3-dD-fSJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cdz-kR-hHM" id="p2j-yW-tac"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="Xlp-e5-E9S"/>
+                    <connections>
+                        <outlet property="mapView" destination="KQ3-dD-fSJ" id="Y6x-vu-Up4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wmz-Br-Grx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-232" y="1100"/>
         </scene>
         <!--Instagram Search View Controller-->
         <scene sceneID="Nd8-hL-sVb">
@@ -133,8 +163,8 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m9l-Bc-eG2">
                                                     <rect key="frame" x="267" y="266" width="25" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="coP-Ac-7OB"/>
-                                                        <constraint firstAttribute="width" constant="25" id="rsC-Du-oZ0"/>
+                                                        <constraint firstAttribute="height" constant="25" id="ZoZ-sr-02n"/>
+                                                        <constraint firstAttribute="width" constant="25" id="drZ-4X-Nmb"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -142,12 +172,12 @@
                                         </view>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstItem="m9l-Bc-eG2" firstAttribute="trailing" secondItem="apn-eF-6NH" secondAttribute="trailingMargin" id="3B6-Ih-RPR"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="m9l-Bc-eG2" secondAttribute="bottom" constant="1" id="3gd-5f-Lx4"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="oxi-vS-8z6" secondAttribute="trailing" constant="-8" id="IAv-Kl-U2d"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="oxi-vS-8z6" secondAttribute="bottom" constant="-8" id="OEY-Ni-9eP"/>
                                             <constraint firstItem="oxi-vS-8z6" firstAttribute="leading" secondItem="apn-eF-6NH" secondAttribute="leadingMargin" constant="-8" id="bYU-6v-x7J"/>
                                             <constraint firstItem="oxi-vS-8z6" firstAttribute="top" secondItem="apn-eF-6NH" secondAttribute="topMargin" constant="-8" id="f97-sn-Adm"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="m9l-Bc-eG2" secondAttribute="bottom" constant="1" id="gvM-nN-rS7"/>
+                                            <constraint firstItem="m9l-Bc-eG2" firstAttribute="trailing" secondItem="apn-eF-6NH" secondAttribute="trailingMargin" id="pnG-Oa-mxe"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="heartImageView" destination="zgg-eg-07X" id="pZq-LP-peW"/>
@@ -197,7 +227,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="661" y="1100"/>
+            <point key="canvasLocation" x="688" y="1100"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7fG-Xk-9S1">
@@ -210,6 +240,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="cdz-kR-hHM" kind="relationship" relationship="viewControllers" id="CyM-Ll-SKq"/>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="gei-Mw-TUf"/>
                         <segue destination="5mI-zo-tDm" kind="relationship" relationship="viewControllers" id="vKy-8M-Wf5"/>
                     </connections>

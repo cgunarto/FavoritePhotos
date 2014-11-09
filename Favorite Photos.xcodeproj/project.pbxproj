@@ -17,6 +17,7 @@
 		4F91C12F1A0E953E00FF6A65 /* InstagramSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C12E1A0E953E00FF6A65 /* InstagramSearchViewController.m */; };
 		4F91C1361A0E98A400FF6A65 /* InstagramPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C1351A0E98A400FF6A65 /* InstagramPhotos.m */; };
 		4F91C13A1A0EA45800FF6A65 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C1391A0EA45800FF6A65 /* PhotoCollectionViewCell.m */; };
+		4F91C13D1A100BE400FF6A65 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91C13C1A100BE400FF6A65 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		4F91C1351A0E98A400FF6A65 /* InstagramPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramPhotos.m; sourceTree = "<group>"; };
 		4F91C1381A0EA45800FF6A65 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		4F91C1391A0EA45800FF6A65 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		4F91C13B1A100BE400FF6A65 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		4F91C13C1A100BE400FF6A65 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 				4F91C0611A0C38F700FF6A65 /* RootViewController.m */,
 				4F91C12D1A0E953E00FF6A65 /* InstagramSearchViewController.h */,
 				4F91C12E1A0E953E00FF6A65 /* InstagramSearchViewController.m */,
+				4F91C13B1A100BE400FF6A65 /* MapViewController.h */,
+				4F91C13C1A100BE400FF6A65 /* MapViewController.m */,
 				4F91C1371A0E98A600FF6A65 /* Model */,
 				4F91C0631A0C38F700FF6A65 /* Main.storyboard */,
 				4F91C0661A0C38F700FF6A65 /* Images.xcassets */,
@@ -248,6 +253,7 @@
 				4F91C05F1A0C38F700FF6A65 /* AppDelegate.m in Sources */,
 				4F91C1361A0E98A400FF6A65 /* InstagramPhotos.m in Sources */,
 				4F91C05C1A0C38F700FF6A65 /* main.m in Sources */,
+				4F91C13D1A100BE400FF6A65 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

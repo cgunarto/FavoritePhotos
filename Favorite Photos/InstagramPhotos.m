@@ -14,12 +14,6 @@
 {
     self = [super init];
 
-    //If it's an image or video
-    if ([photoDictionary[@"type"] isEqualToString:@"image"])
-    {
-        self.isImage = YES;
-    }
-
     //Set photoID for checking favorites
     self.photoID = photoDictionary[@"id"];
 
@@ -31,8 +25,8 @@
 
     self.standardResolutionPhotoData = [NSData dataWithContentsOfURL:imageURL];
 
-    //Getting the latitude and longitude
 
+    //Check if the location is available (if it's a dictionary) and get the lat long
     if ([photoDictionary[@"location"] isKindOfClass:[NSDictionary class]])
     {
         NSDictionary *location = photoDictionary[@"location"];

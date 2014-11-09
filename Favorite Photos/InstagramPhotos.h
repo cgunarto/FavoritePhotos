@@ -16,8 +16,6 @@
 @property (strong, nonatomic) NSNumber *longitude;
 
 @property BOOL isFavorited;
-@property BOOL isImage;
-
 
 - (instancetype) initWithDictionary: (NSDictionary *)photoDictionary;
 
