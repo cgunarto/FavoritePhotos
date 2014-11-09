@@ -19,7 +19,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YqD-Tk-qhp">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CY8-Ps-gwh">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="CY8-Ps-gwh">
                                     <size key="itemSize" width="300" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -59,8 +59,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YqD-Tk-qhp" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="KLN-Jo-Esr"/>
+                            <constraint firstItem="YqD-Tk-qhp" firstAttribute="bottom" secondItem="kh9-bI-dsS" secondAttribute="bottomMargin" id="Oy7-sr-aRc"/>
+                            <constraint firstItem="YqD-Tk-qhp" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="PSG-m9-yba"/>
                             <constraint firstItem="YqD-Tk-qhp" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="YRu-1L-Xig"/>
+                            <constraint firstItem="YqD-Tk-qhp" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="r9M-dH-Clo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YqD-Tk-qhp" secondAttribute="trailing" constant="-16" id="ukR-DP-IPj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YqD-Tk-qhp" secondAttribute="trailing" constant="-16" id="vmo-Yh-RAe"/>
                             <constraint firstItem="YqD-Tk-qhp" firstAttribute="bottom" secondItem="kh9-bI-dsS" secondAttribute="bottomMargin" id="xHy-bK-MSX"/>
                         </constraints>
                     </view>
