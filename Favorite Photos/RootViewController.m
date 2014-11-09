@@ -14,6 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (strong, nonatomic) NSMutableArray *favoritedPhotosArray;
+@property (strong, nonatomic) NSMutableArray *favoritedPhotosLatitudeArray;
+@property (strong, nonatomic) NSMutableArray *favoritedPhotosLongitudeArray;
 
 @end
 
@@ -41,7 +44,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     PhotoCollectionViewCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"favoriteCell" forIndexPath:indexPath];
-    NSData *imageData= self.favoritePhotosArray[indexPath.row];
+    NSData *imageData= self.favoritedPhotosArray[indexPath.row];
 
     photoCell.imageView.image = [UIImage imageWithData:imageData];
 
@@ -50,7 +53,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.favoritePhotosArray.count;
+    return self.favoritedPhotosArray.count;
 }
 
 #pragma mark Long Press to Edit
@@ -66,7 +69,12 @@
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction *action)
                                                      {
-                                                         [self.favoritePhotosArray removeObjectAtIndex:selectedIndexPath.item];
+                                                         [self.favoritedPhotosArray removeObjectAtIndex:selectedIndexPath.item];
+
+                                                         [self.favoritedPhotosLatitudeArray removeObjectAtIndex:selectedIndexPath.item];
+
+                                                         [self.favoritedPhotosLongitudeArray removeObjectAtIndex:selectedIndexPath.item];
+
                                                          [self save];
                                                          [self.collectionView reloadData];
                                                          [alert dismissViewControllerAnimated:YES completion:nil];
@@ -99,17 +107,32 @@
 - (void)save
 {
     NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
-    [self.favoritePhotosArray writeToURL:plistURL atomically:YES];
+    [self.favoritedPhotosArray writeToURL:plistURL atomically:YES];
+
+    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
+    [self.favoritedPhotosLatitudeArray writeToURL:plistURL atomically:YES];
+
+    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
+    [self.favoritedPhotosLongitudeArray writeToURL:plistURL atomically:YES];
+
 }
 
 - (void)load
 {
     NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
-    self.favoritePhotosArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+    self.favoritedPhotosArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
 
-    if (self.favoritePhotosArray == nil)
+    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
+    self.favoritedPhotosLatitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+
+    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
+    self.favoritedPhotosLongitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+
+    if (self.favoritedPhotosArray == nil)
     {
-        self.favoritePhotosArray = [@[]mutableCopy];
+        self.favoritedPhotosArray = [@[]mutableCopy];
+        self.favoritedPhotosLatitudeArray = [@[]mutableCopy];
+        self.favoritedPhotosLongitudeArray = [@[]mutableCopy];
     }
 }
 

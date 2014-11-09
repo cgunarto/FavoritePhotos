@@ -15,7 +15,10 @@
 
 @interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) NSMutableArray *allPhotosArray;
+
 @property (strong, nonatomic) NSMutableArray *favoritedPhotosDataArray;
+@property (strong, nonatomic) NSMutableArray *favoritedPhotosLatitudeArray;
+@property (strong, nonatomic) NSMutableArray *favoritedPhotosLongitudeArray;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *doubleTapImageGesture;
@@ -30,7 +33,7 @@
     [self load];
     [self setRequiredTapGestureForFavorite];
 
-//    self.collectionView.pagingEnabled = YES;
+    self.collectionView.pagingEnabled = YES;
     self.tabBarController.delegate = self;
 }
 
@@ -176,14 +179,27 @@
             favoritedPhoto.isFavorited = YES;
         }
     }
-    //TODO:FIX THIS
-    //IF photo is not already favorited, add it to the array
+
+    //IF photo is not already favorited, add it to the array, add location as well
     if (favoritedPhoto.isFavorited == NO)
     {
         NSLog(@"Photo added to array");
         NSData *favoritedPhotoData = favoritedPhoto.standardResolutionPhotoData;
 
+        NSNumber *favoritedPhotoLatitude = favoritedPhoto.latitude;
+        NSNumber *favoritedPhotoLongitude = favoritedPhoto.longitude;
+
+        //if location is null or nil, then add a 0 so the array can have the same index
+        if (favoritedPhoto.latitude == nil || favoritedPhoto.longitude == nil)
+        {
+            favoritedPhotoLatitude = 0;
+            favoritedPhotoLongitude = 0;
+        }
+
         [self.favoritedPhotosDataArray addObject:favoritedPhotoData];
+        [self.favoritedPhotosLatitudeArray addObject:favoritedPhotoLatitude];
+        [self.favoritedPhotosLongitudeArray addObject:favoritedPhotoLongitude];
+
         favoritedPhoto.isFavorited = YES;
     }
 
@@ -197,6 +213,12 @@
 {
     NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
     [self.favoritedPhotosDataArray writeToURL:plistURL atomically:YES];
+
+    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
+    [self.favoritedPhotosLatitudeArray writeToURL:plistURL atomically:YES];
+
+    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
+    [self.favoritedPhotosLongitudeArray writeToURL:plistURL atomically:YES];
 }
 
 - (void)load
@@ -204,10 +226,19 @@
     NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
     self.favoritedPhotosDataArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
 
+    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
+    self.favoritedPhotosLatitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+
+    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
+    self.favoritedPhotosLongitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+
     if (self.favoritedPhotosDataArray == nil)
     {
         self.favoritedPhotosDataArray = [@[]mutableCopy];
+        self.favoritedPhotosLatitudeArray = [@[]mutableCopy];
+        self.favoritedPhotosLongitudeArray = [@[]mutableCopy];
     }
+
 }
 
 - (NSURL*)documentsDirectoryURL

@@ -31,6 +31,15 @@
 
     self.standardResolutionPhotoData = [NSData dataWithContentsOfURL:imageURL];
 
+    //Getting the latitude and longitude
+
+    if ([photoDictionary[@"location"] isKindOfClass:[NSDictionary class]])
+    {
+        NSDictionary *location = photoDictionary[@"location"];
+        self.latitude = location[@"latitude"];
+        self.longitude = location[@"longitude"];
+    }
+
     return self;
 }
 

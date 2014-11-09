@@ -12,6 +12,9 @@
 
 @property (strong, nonatomic) NSData *standardResolutionPhotoData;
 @property (strong, nonatomic) NSString *photoID;
+@property (strong, nonatomic) NSNumber *latitude;
+@property (strong, nonatomic) NSNumber *longitude;
+
 @property BOOL isFavorited;
 @property BOOL isImage;
 

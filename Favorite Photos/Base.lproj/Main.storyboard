@@ -130,7 +130,7 @@
                                                         <constraint firstAttribute="width" constant="50" id="Xc3-mo-hva"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m9l-Bc-eG2">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m9l-Bc-eG2">
                                                     <rect key="frame" x="267" y="266" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="coP-Ac-7OB"/>
@@ -142,10 +142,12 @@
                                         </view>
                                         <gestureRecognizers/>
                                         <constraints>
+                                            <constraint firstItem="m9l-Bc-eG2" firstAttribute="trailing" secondItem="apn-eF-6NH" secondAttribute="trailingMargin" id="3B6-Ih-RPR"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="oxi-vS-8z6" secondAttribute="trailing" constant="-8" id="IAv-Kl-U2d"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="oxi-vS-8z6" secondAttribute="bottom" constant="-8" id="OEY-Ni-9eP"/>
                                             <constraint firstItem="oxi-vS-8z6" firstAttribute="leading" secondItem="apn-eF-6NH" secondAttribute="leadingMargin" constant="-8" id="bYU-6v-x7J"/>
                                             <constraint firstItem="oxi-vS-8z6" firstAttribute="top" secondItem="apn-eF-6NH" secondAttribute="topMargin" constant="-8" id="f97-sn-Adm"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="m9l-Bc-eG2" secondAttribute="bottom" constant="1" id="gvM-nN-rS7"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="heartImageView" destination="zgg-eg-07X" id="pZq-LP-peW"/>
