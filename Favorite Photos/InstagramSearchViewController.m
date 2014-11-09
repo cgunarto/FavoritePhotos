@@ -156,8 +156,8 @@
             }];
 
             //Check if the photo is already in the array
-           InstagramPhotos *favInstagramPhoto = self.allPhotosArray[indexPath.item];
-           [self checkAndAddToFavoritedPhotosArray:favInstagramPhoto];
+           InstagramPhotos *favoritedPhoto = self.allPhotosArray[indexPath.item];
+           [self checkAndAddToFavoritedPhotosArray:favoritedPhoto];
         }
     }
 }
@@ -165,8 +165,6 @@
 //Check if double tapped photo is already in the favorited array, if not, add it in the favorite Photos array
 - (void)checkAndAddToFavoritedPhotosArray:(InstagramPhotos *)favoritedPhoto
 {
-    BOOL photoIsFavorited = NO;
-
     //IF Photo is already favorited, set isFavorited value to YES, but don't add it again to the array
     for (NSData *favoritedPhotoData in self.favoritedPhotosDataArray)
     {
@@ -177,7 +175,7 @@
     }
     //TODO:FIX THIS
     //IF photo is not already favorited, add it to the array
-    if (photoIsFavorited == NO)
+    if (favoritedPhoto.isFavorited == NO)
     {
         NSLog(@"Photo added to array");
         NSData *favoritedPhotoData = favoritedPhoto.standardResolutionPhotoData;
