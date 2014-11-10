@@ -73,8 +73,8 @@
                                                      handler:^(UIAlertAction *action)
                                                      {
                                                          [self.favoritedPhotosArray removeObjectAtIndex:selectedIndexPath.item];
-                                                         [self.favoritedPhotosLatitudeArray removeObjectAtIndex:selectedIndexPath.item];
-                                                         [self.favoritedPhotosLongitudeArray removeObjectAtIndex:selectedIndexPath.item];
+//                                                         [self.favoritedPhotosLatitudeArray removeObjectAtIndex:selectedIndexPath.item];
+//                                                         [self.favoritedPhotosLongitudeArray removeObjectAtIndex:selectedIndexPath.item];
 
                                                          [self save];
                                                          [self.collectionView reloadData];
@@ -151,12 +151,12 @@
 {
     NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
     [self.favoritedPhotosArray writeToURL:plistURL atomically:YES];
-
-    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
-    [self.favoritedPhotosLatitudeArray writeToURL:plistURL atomically:YES];
-
-    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
-    [self.favoritedPhotosLongitudeArray writeToURL:plistURL atomically:YES];
+//
+//    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
+//    [self.favoritedPhotosLatitudeArray writeToURL:plistURL atomically:YES];
+//
+//    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
+//    [self.favoritedPhotosLongitudeArray writeToURL:plistURL atomically:YES];
 
 }
 
@@ -164,18 +164,18 @@
 {
     NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
     self.favoritedPhotosArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
-
-    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
-    self.favoritedPhotosLatitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
-
-    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
-    self.favoritedPhotosLongitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+//
+//    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
+//    self.favoritedPhotosLatitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+//
+//    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
+//    self.favoritedPhotosLongitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
 
     if (self.favoritedPhotosArray == nil)
     {
         self.favoritedPhotosArray = [@[]mutableCopy];
-        self.favoritedPhotosLatitudeArray = [@[]mutableCopy];
-        self.favoritedPhotosLongitudeArray = [@[]mutableCopy];
+//        self.favoritedPhotosLatitudeArray = [@[]mutableCopy];
+//        self.favoritedPhotosLongitudeArray = [@[]mutableCopy];
     }
 }
 

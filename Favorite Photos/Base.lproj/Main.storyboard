@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Favorites-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="RootViewController" sceneMemberID="viewController">
@@ -71,7 +71,7 @@
                             <constraint firstItem="YqD-Tk-qhp" firstAttribute="bottom" secondItem="kh9-bI-dsS" secondAttribute="bottomMargin" id="xHy-bK-MSX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="9CO-gh-hmS"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="hearts-25" id="9CO-gh-hmS"/>
                     <connections>
                         <outlet property="collectionView" destination="YqD-Tk-qhp" id="Kih-kC-x12"/>
                     </connections>
@@ -112,14 +112,14 @@
                             <constraint firstItem="cuG-ZU-uiU" firstAttribute="top" secondItem="KQ3-dD-fSJ" secondAttribute="bottom" id="vvF-vx-CGf"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="Xlp-e5-E9S"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="pointer" id="Xlp-e5-E9S"/>
                     <connections>
                         <outlet property="mapView" destination="KQ3-dD-fSJ" id="Y6x-vu-Up4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wmz-Br-Grx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-232" y="1100"/>
+            <point key="canvasLocation" x="720" y="1100"/>
         </scene>
         <!--Instagram Search View Controller-->
         <scene sceneID="Nd8-hL-sVb">
@@ -159,11 +159,11 @@
                                                         <constraint firstAttribute="height" constant="300" id="iY4-U4-t79"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgg-eg-07X">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zgg-eg-07X">
                                                     <rect key="frame" x="125" y="125" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="Huw-0T-sO3"/>
-                                                        <constraint firstAttribute="width" constant="50" id="Xc3-mo-hva"/>
+                                                        <constraint firstAttribute="height" constant="50" id="avr-MT-s3j"/>
+                                                        <constraint firstAttribute="width" constant="50" id="r37-QG-fTB"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m9l-Bc-eG2">
@@ -178,9 +178,11 @@
                                         </view>
                                         <gestureRecognizers/>
                                         <constraints>
+                                            <constraint firstAttribute="bottomMargin" secondItem="zgg-eg-07X" secondAttribute="bottom" constant="117" id="1pz-GU-G13"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="m9l-Bc-eG2" secondAttribute="bottom" constant="1" id="3gd-5f-Lx4"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="oxi-vS-8z6" secondAttribute="trailing" constant="-8" id="IAv-Kl-U2d"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="oxi-vS-8z6" secondAttribute="bottom" constant="-8" id="OEY-Ni-9eP"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="zgg-eg-07X" secondAttribute="trailing" constant="117" id="aYX-gQ-YLR"/>
                                             <constraint firstItem="oxi-vS-8z6" firstAttribute="leading" secondItem="apn-eF-6NH" secondAttribute="leadingMargin" constant="-8" id="bYU-6v-x7J"/>
                                             <constraint firstItem="oxi-vS-8z6" firstAttribute="top" secondItem="apn-eF-6NH" secondAttribute="topMargin" constant="-8" id="f97-sn-Adm"/>
                                             <constraint firstItem="m9l-Bc-eG2" firstAttribute="trailing" secondItem="apn-eF-6NH" secondAttribute="trailingMargin" id="pnG-Oa-mxe"/>
@@ -233,7 +235,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="688" y="1100"/>
+            <point key="canvasLocation" x="-298" y="1100"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7fG-Xk-9S1">
@@ -246,9 +248,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="cdz-kR-hHM" kind="relationship" relationship="viewControllers" id="CyM-Ll-SKq"/>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="gei-Mw-TUf"/>
                         <segue destination="5mI-zo-tDm" kind="relationship" relationship="viewControllers" id="vKy-8M-Wf5"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="gei-Mw-TUf"/>
+                        <segue destination="cdz-kR-hHM" kind="relationship" relationship="viewControllers" id="CyM-Ll-SKq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLy-va-FWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,6 +258,10 @@
             <point key="canvasLocation" x="234" y="385"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hearts-25" width="25" height="25"/>
+        <image name="pointer" width="25" height="25"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

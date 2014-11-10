@@ -120,7 +120,15 @@
     if (instagramPhoto.isFavorited == YES)
     {
 
-            photoCell.smallHeartView.image = [UIImage imageNamed:@"solid_red_heart"];
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             photoCell.heartImageView.image = [UIImage imageNamed:@"solid_gray_heart"];
+                             photoCell.heartImageView.alpha =1.0f;
+                             photoCell.heartImageView.alpha =0.0f;
+                         }];
+
+        photoCell.smallHeartView.image = [UIImage imageNamed:@"solid_red_heart"];
+
 
     }
 
@@ -152,14 +160,6 @@
         if (indexPath)
         {
             NSLog(@"Image at %li was double tapped",indexPath.item);
-
-            PhotoCollectionViewCell *instaCell = (PhotoCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
-            
-            [UIView animateWithDuration:1
-                             animations:^{
-                instaCell.heartImageView.image = [UIImage imageNamed:@"solid_gray_heart"];
-                instaCell.heartImageView.alpha =0.0f;
-            }];
 
             //Check if the photo is already in the array
            InstagramPhotos *favoritedPhoto = self.allPhotosArray[indexPath.item];
