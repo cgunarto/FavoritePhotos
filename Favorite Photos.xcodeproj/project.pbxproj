@@ -21,6 +21,7 @@
 		4F91C1441A102CFA00FF6A65 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F91C1431A102CFA00FF6A65 /* MapKit.framework */; };
 		4F91C1461A10311800FF6A65 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F91C1451A10311800FF6A65 /* Social.framework */; };
 		4F91C1481A1033BB00FF6A65 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F91C1471A1033BB00FF6A65 /* Twitter.framework */; };
+		4F91C14A1A1035E900FF6A65 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F91C1491A1035E900FF6A65 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		4F91C1431A102CFA00FF6A65 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4F91C1451A10311800FF6A65 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		4F91C1471A1033BB00FF6A65 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		4F91C1491A1035E900FF6A65 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F91C14A1A1035E900FF6A65 /* MessageUI.framework in Frameworks */,
 				4F91C1481A1033BB00FF6A65 /* Twitter.framework in Frameworks */,
 				4F91C1461A10311800FF6A65 /* Social.framework in Frameworks */,
 				4F91C1441A102CFA00FF6A65 /* MapKit.framework in Frameworks */,
@@ -84,9 +87,7 @@
 		4F91C04D1A0C38F700FF6A65 = {
 			isa = PBXGroup;
 			children = (
-				4F91C1471A1033BB00FF6A65 /* Twitter.framework */,
-				4F91C1451A10311800FF6A65 /* Social.framework */,
-				4F91C1431A102CFA00FF6A65 /* MapKit.framework */,
+				4F91C14B1A1035EE00FF6A65 /* Framework */,
 				4F91C0581A0C38F700FF6A65 /* Favorite Photos */,
 				4F91C0721A0C38F700FF6A65 /* Favorite PhotosTests */,
 				4F91C0571A0C38F700FF6A65 /* Products */,
@@ -157,6 +158,17 @@
 				4F91C1391A0EA45800FF6A65 /* PhotoCollectionViewCell.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		4F91C14B1A1035EE00FF6A65 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				4F91C1491A1035E900FF6A65 /* MessageUI.framework */,
+				4F91C1471A1033BB00FF6A65 /* Twitter.framework */,
+				4F91C1451A10311800FF6A65 /* Social.framework */,
+				4F91C1431A102CFA00FF6A65 /* MapKit.framework */,
+			);
+			name = Framework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

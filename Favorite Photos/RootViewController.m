@@ -11,6 +11,7 @@
 #import "InstagramPhotos.h"
 #import <Social/Social.h>
 #import <Twitter/Twitter.h>
+#import <MessageUI/MessageUI.h>
 
 @interface RootViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate>
 
@@ -72,9 +73,7 @@
                                                      handler:^(UIAlertAction *action)
                                                      {
                                                          [self.favoritedPhotosArray removeObjectAtIndex:selectedIndexPath.item];
-
                                                          [self.favoritedPhotosLatitudeArray removeObjectAtIndex:selectedIndexPath.item];
-
                                                          [self.favoritedPhotosLongitudeArray removeObjectAtIndex:selectedIndexPath.item];
 
                                                          [self save];
@@ -99,6 +98,26 @@
                                   }];
 
 
+    UIAlertAction* mailButton = [UIAlertAction actionWithTitle:@"E-mai it"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action)
+                                 {
+
+                                     if([MFMailComposeViewController canSendMail])
+                                     {
+                                         MFMailComposeViewController *mailCont = [[MFMailComposeViewController alloc] init];
+                                         mailCont.mailComposeDelegate = self;
+
+                                         [mailCont setSubject:@"Check out this awesome photo!"];
+                                         [mailCont addAttachmentData:self.favoritedPhotosArray[selectedIndexPath.row] mimeType:@"image/jpeg" fileName:@"favorited photo"];
+
+                                         [self presentViewController:mailCont animated:YES completion:nil];
+                                     }
+
+
+                                 }];
+
+
     UIAlertAction* cancelButton = [UIAlertAction actionWithTitle:@"Cancel"
                                                     style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction * action)
@@ -110,6 +129,7 @@
 
     [alert addAction:deleteButton];
     [alert addAction:tweetButton];
+    [alert addAction:mailButton];
     [alert addAction:cancelButton];
 
     [self presentViewController:alert
@@ -118,8 +138,10 @@
 
 }
 
-
-
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
