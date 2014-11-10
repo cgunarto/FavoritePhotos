@@ -27,6 +27,9 @@
 
 @implementation InstagramSearchViewController
 
+
+#pragma mark View Controller Life Cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -36,6 +39,9 @@
     self.collectionView.pagingEnabled = YES;
     self.tabBarController.delegate = self;
 }
+
+
+#pragma mark Search Bar Button
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
@@ -49,6 +55,8 @@
     [self loadInstagramURLRequest:instaURLString];
 }
 
+
+#pragma mark Load URL
 
 - (void)loadInstagramURLRequest:(NSString *)urlString
 {
@@ -93,6 +101,7 @@
                                  }
                             }];
 }
+
 
 #pragma mark Collection View Delegate Method
 
@@ -168,6 +177,8 @@
     }
 }
 
+#pragma mark Helper Methods
+
 //Check if double tapped photo is already in the favorited array, if not, add it in the favorite Photos array
 - (void)checkAndAddToFavoritedPhotosArray:(InstagramPhotos *)favoritedPhoto
 {
@@ -214,11 +225,11 @@
     NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
     [self.favoritedPhotosDataArray writeToURL:plistURL atomically:YES];
 
-    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
-    [self.favoritedPhotosLatitudeArray writeToURL:plistURL atomically:YES];
-
-    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
-    [self.favoritedPhotosLongitudeArray writeToURL:plistURL atomically:YES];
+//    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
+//    [self.favoritedPhotosLatitudeArray writeToURL:plistURL atomically:YES];
+//
+//    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
+//    [self.favoritedPhotosLongitudeArray writeToURL:plistURL atomically:YES];
 }
 
 - (void)load
@@ -226,17 +237,17 @@
     NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotos.plist"];
     self.favoritedPhotosDataArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
 
-    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
-    self.favoritedPhotosLatitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
-
-    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
-    self.favoritedPhotosLongitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+//    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLatitude.plist"];
+//    self.favoritedPhotosLatitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
+//
+//    plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"favPhotosLongitude.plist"];
+//    self.favoritedPhotosLongitudeArray = [NSMutableArray arrayWithContentsOfURL:plistURL];
 
     if (self.favoritedPhotosDataArray == nil)
     {
         self.favoritedPhotosDataArray = [@[]mutableCopy];
-        self.favoritedPhotosLatitudeArray = [@[]mutableCopy];
-        self.favoritedPhotosLongitudeArray = [@[]mutableCopy];
+//        self.favoritedPhotosLatitudeArray = [@[]mutableCopy];
+//        self.favoritedPhotosLongitudeArray = [@[]mutableCopy];
     }
 
 }
