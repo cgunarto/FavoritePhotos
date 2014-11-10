@@ -15,6 +15,7 @@
 
 @interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) NSMutableArray *allPhotosArray;
+@property (strong, nonatomic) NSMutableDictionary *photoDictionary;
 
 @property (strong, nonatomic) NSMutableArray *favoritedPhotosDataArray;
 @property (strong, nonatomic) NSMutableArray *favoritedPhotosLatitudeArray;
