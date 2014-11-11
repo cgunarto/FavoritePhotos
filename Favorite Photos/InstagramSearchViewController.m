@@ -13,7 +13,7 @@
 
 #define kURLSearchTag @"https://api.instagram.com/v1/tags/%@/media/recent?count=10&client_id=c0ee42e28f254733b9d1a1dbdb75fd23"
 
-@interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UITabBarControllerDelegate, UISearchBarDelegate>
+@interface InstagramSearchViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarControllerDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) NSMutableArray *allPhotosArray;
 @property (strong, nonatomic) NSMutableDictionary *photoDictionary;
 
@@ -148,6 +148,15 @@
     }
 
     return photoCell;
+}
+
+#pragma mark Collection View Flow Layout
+
+//changes the cell so it is the width of the screen
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    return CGSizeMake(width, width);
 }
 
 #pragma mark Tap Gesture
